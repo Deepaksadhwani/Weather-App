@@ -6,8 +6,9 @@ const searchForm = document.querySelector("[data-searchForm]");
 const loadingScreen = document.querySelector(".loading-container");
 const userWeatherInfo = document.querySelector(".user-info-container");
 const cards = document.querySelector(".parameter-container");
-
+const errorContainer = document.querySelector(".error-container");
 const API_KEY = "1fd0fe32642b20ca720e8384741221c8";
+
 let currentTab = userTab;
 currentTab.classList.add("current-tab");
 getfromSessionStorage();
@@ -139,7 +140,8 @@ async function fetchSearchWatherInfo(city) {
     loadingScreen.classList.remove("active");
     userWeatherInfo.classList.add("active");
     renderWeatherInfo(data);
-  } catch (err) {
+  } 
+  catch (err) {
     console.log(err);
   }
 }

@@ -3,103 +3,189 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 
+    font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="main.css" />
     <title>Weather App</title>
   </head>
-  <body>
-    <div class="wrapper">
-      <h1>Weather app</h1>
 
-      <div class="tab-container">
-        <button class="tab" data-userWeather>Your Weather</button>
-        <button class="tab" data-searchWeather>Search Weather</button>
+  <!-- body section  -->
+  <body>
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+
+    <div
+      class="wrapper bg-gradient-to-br from-blue-950 to-blue-500 w-screen h-screen text-light2"
+    >
+      <h1 class="text-center uppercase pt-5 text-[34px] font-bold">
+        Weather app
+      </h1>
+
+      <div
+        class="tab-container flex justify-evenly md:justify-between max-w-[550px] mx-auto my-0 w-[90%] mt-6"
+      >
+        <button
+          class="tab cursor-pointer text-[1rem] tracking-[1.75px] py-[5px] px-[8px]"
+          data-userWeather
+        >
+          Your Weather
+        </button>
+        <button
+          class="tab cursor-pointer text-[1rem] tracking-[1.75px] py-[5px] px-[8px]"
+          data-searchWeather
+        >
+          Search Weather
+        </button>
       </div>
 
-      <div class="weather-container">
+      <div
+        class="weather-container flex justify-center flex-col items-center mt-[1rem] mb-[1rem]"
+      >
         <!-- grand location container -->
-        <div class="grant-location-container">
+        <div class="grant-location-container flex flex-col items-center">
           <img
             src="./Images/location.png"
             alt=""
             width="80"
             height="80"
             loading="lazy"
+            class="mb-8 mt-4"
           />
-          <p>Grant Location Access</p>
-          <p>Allow Access to get weather Information</p>
-          <button class="btn" data-GrantAccess>Grant Access</button>
-          <!-- 
+          <p class="text-[1.75rem] font-semibold">Grant Location Access</p>
+          <p
+            class="text-[0.85rem] font-normal tracking-[0.75px] mt-[0.35rem] mb-[1.75rem]"
+          >
+            Allow Access to get weather Information
+          </p>
+          <button
+            class="btn rounded-md mb-2 text-[0.85rem] uppercase bg-dark2 cursor-pointer py-[10px] px-[30px]"
+            data-GrantAccess
+          >
+            Grant Access
+          </button>
+        </div>
+        <!-- 
           Search form -->
-          <form  class="form-container" data-searchForm>
-            <input
-              type="text"
-              placeholder="Search for City..."
-              data-searchInput
+        <form class="form-container flex items-center" data-searchForm>
+          <input
+            type="text"
+            placeholder="Search for City..."
+            data-searchInput
+            class="w-[calc(100%-80px)] rounded-lg h-10 py-0 px-[20px] bg-[rgba(216,226,239,0.5)] focus:outline"
+          />
+          <button
+            class="btn w-10 h-10 flex justify-center items-center bg-dark2 cursor-pointer rounded-full"
+          >
+            <img
+              src="./Images/search.png"
+              width="20"
+              height="20"
+              loading="lazy"
+              alt=""
             />
-            <button class="btn">
-              <img
-                src="./Images/search.png"
-                width="20"
-                height="20"
-                loading="lazy"
-                alt=""
-              />
-            </button>
+          </button>
+        </form>
 
-            <!-- loading screen container -->
-            <div class="loading-container">
-              <img
-                src="./Images/loading.gif"
-                width="150"
-                height="150"
-                loading="lazy"
-                alt=""
-              />
-              <p>Loading</p>
-            </div>
-          </form>
+        <!-- loading screen container -->
+        <div class="loading-container mt-4 flex flex-col text-center">
+          <img
+            src="./Images/loading.gif"
+            width="150"
+            height="150"
+            loading="lazy"
+            alt=""
+          />
+          <p class="uppercase text-center">Loading</p>
+        </div>
 
-          <!-- show weather info -->
-          <div class="user-info-container">
-            <!-- 
+        <!-- show weather info -->
+        <div class="user-info-container flex flex-col text-center">
+          <!-- 
             city and name and flag  -->
-            <div class="name">
-              <p data-cityName></p>
-              <img data-countryIcon />
+          <div
+            class="name flex flex-col items-center gap-y-0 gap-x-2 mb-[1rem]"
+          >
+            <div
+              class="name flex flex-row items-center gap-y-0 gap-x-2 mb-[1rem]"
+            >
+              <p data-cityName class="text-[30px]"></p>
+              <img data-countryIcon class="h-7 w-8" />
             </div>
+
             <!-- weather description -->
-            <p data-weatherDesc></p>
+            <p data-weatherDesc class="text-[1.5rem] font-extralight"></p>
             <!-- weather icon  -->
-            <img data-weatherIcon />
+            <img data-weatherIcon class="w-[90px] h-[90px]" />
             <!-- temprature -->
-            <p data-temp></p>
-            <!-- 
+            <p data-temp class="text-[2.75rem]"></p>
+          </div>
+          <!-- 
               3 cards parameters -->
-            <div class="parameter-container">
-              <!-- card1 -->
-              <div class="parameter">
-                <img src="./Images/wind.png" alt="" />
-                <p>windspeed</p>
-                <p data-windspeed></p>
-              </div>
-              <!-- 
+          <div
+            class="parameter-container md:w-[500px] w-[250px] flex gap-x-5 gap-y-2.5 justify-center items-center"
+          >
+            <!-- card1 -->
+            <div
+              class="parameter width-[200px] w-[30%] bg-[rgba(219,226,239,0.5)] rounded-md p-4 flex flex-col items-center gap-y-1"
+            >
+              <img
+                src="./Images/wind.png"
+                alt=""
+                class="w-[50px] h-[40px] md:h-[50px]"
+              />
+              <p class="text-[12px] md:text-[1.15rem] uppercase font-semibold">
+                windspeed
+              </p>
+              <p data-windspeed class="text-[1rem] font-extralight"></p>
+            </div>
+            <!-- 
                  card2 -->
-              <div class="parameter">
-                <img src="./Images/humidity.png" alt="" />
-                <p>humidity</p>
-                <p data-humidity></p>
-              </div>
-              <!-- 
+            <div
+              class="parameter parameter width-[200px] w-[30%] bg-[rgba(219,226,239,0.5)] rounded-md p-4 items-center flex flex-col gap-y-1"
+            >
+              <img
+                src="./Images/humidity.png"
+                alt=""
+                class="w-[50px] h-[40px] md:h-[50px]"
+              />
+              <p class="text-[12px] md:text-[1.15rem] uppercase font-semibold">
+                humidity
+              </p>
+              <p data-humidity class="text-[1rem] font-extralight"></p>
+            </div>
+            <!-- 
                  card3 -->
-              <div class="parameter">
-                <img src="./Images/cloud.png" />
-                <p>Clouds</p>
-                <p data-cloudiness></p>
-              </div>
+            <div
+              class="parameter parameter width-[200px] w-[30%] bg-[rgba(219,226,239,0.5)] items-center rounded-md p-4 flex flex-col gap-y-1"
+            >
+              <img
+                src="./Images/cloud.png"
+                class="w-[50px] h-[40px] md:h-[50px]"
+              />
+              <p class="text-[12px] md:text-[1.15rem] uppercase font-semibold">
+                Clouds
+              </p>
+              <p data-cloudiness class="text-[1rem] font-extralight"></p>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- error handling -->
     </div>
     <script type="module" src="script.js"></script>
   </body>
